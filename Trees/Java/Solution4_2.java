@@ -34,18 +34,32 @@
 //              a4 
 //        a2  a3  a5
 //      a0  a1   a6
-public static Node<T> GenerateBinaryTree<T>(T[] sortedArray) {
 
-    if(sortedArray.length == 0) return null;
-    if(sortedArray.length == 1) return new Node<T>(sortedArray[0]);
-
-    Node<T> rootNode = new Node<T>(sortedArray[sortedArray.length / 2);
-
-    rootNode.leftNode = GenerateBinaryTree(Arrays.copyOfRange(sortedArray, 0, sortedArray.length / 2 - 1));
-    if(sortedArray.length/2 + 1 <= sortedArray.length)
-    rootNode.rightNode = GenerateBinaryTree(Arrays.copyOfRange(sortedArray, sortedArray.length / 2 + 1, sortedArray.length - 1));
-
-    return root;
-
+import java.util.Arrays;
+class Node {
+    public int element;
+    public Node leftNode;
+    public Node rightNode;
+    
+    Node(int e) {this.element = e;};
 }
 
+public class Solution4_2 {
+    
+    public static void main(String[] args) {}
+    
+    public static Node GenerateBinaryTree(int[] sortedArray) {
+
+        if(sortedArray.length == 0) return null;
+        if(sortedArray.length == 1) return new Node(sortedArray[0]);
+        Node rootNode = new Node(sortedArray[sortedArray.length / 2]);
+
+        rootNode.leftNode = GenerateBinaryTree(Arrays.copyOfRange(sortedArray, 0, sortedArray.length / 2 - 1));
+        if(sortedArray.length/2 + 1 <= sortedArray.length)
+        rootNode.rightNode = GenerateBinaryTree(Arrays.copyOfRange(sortedArray, sortedArray.length / 2 + 1, sortedArray.length - 1));
+
+        return rootNode;
+
+    }
+
+}
